@@ -25,10 +25,7 @@ BOM_data_challenge1<- separate(BOM_data, col=Temp_min_max, into = c("temp_min", 
 
 ?as.numeric()
 
-BOM_data_challenge2<- separate(BOM_data, col=Temp_min_max, into = c("temp_min", "temp_max"), sep = "/") %>%
-  mutate
-  
-  as.numeric()
-
-BOM_data
-head(BOM_data)
+BOM_data_challenge2 <- separate(BOM_data, col=Temp_min_max, into = c("temp_min", "temp_max"), sep = "/") %>% 
+  mutate(temp_diff = as.numeric(temp_max) - as.numeric(temp_min)) %>%
+  group_by(Month) %>% 
+ 
