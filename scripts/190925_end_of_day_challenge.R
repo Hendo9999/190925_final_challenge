@@ -7,19 +7,11 @@ BOM_stations <- read_csv("data/BOM_stations.csv")
 #For each station, how many days have a minimum temperature, 
 #a maximum temperature and a rainfall measurement recorded?
 
-
-BOM_data
-head(BOM_data)
-dim(BOM_data)
-
-
-
 BOM_data %>% 
   separate(col=Temp_min_max, into = c("temp_min", "temp_max"), sep = "/") %>%
   filter(Rainfall != "-", temp_min != "-", temp_max != "-") %>% 
   group_by(Station_number) %>% 
   summarise(nrow=n())
-
 
 
 #Challenge2 
@@ -31,7 +23,6 @@ BOM_data %>%
 #To be able to calculate the difference without an error, 
 #you will need to convert them to numeric values with as.numeric() first.
 
-head(BOM_data)
 
 BOM_data %>% 
   separate(col=Temp_min_max, into = c("temp_min", "temp_max"), sep = "/") %>% 
@@ -44,7 +35,7 @@ BOM_data %>%
 
 
 
-#Which state saw the lowest average daily temperature difference?
+#Challenge 3 Which state saw the lowest average daily temperature difference?
 # Need to join the BOM dataframes together
 #The station data is not in a tidy format however, as each station is recorded in it’s own column. (Why is this data not tidy?)
 #To tidy it before merging, you will need to gather() the station data into an intermediate form that has three columns, 
