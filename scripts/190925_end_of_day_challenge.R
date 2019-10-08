@@ -64,5 +64,5 @@ BOM_data_station <- left_join(BOM_data_temp_diff, BOM_stations_gs, by = "Station
   group_by(state) %>% 
   summarise(mean_temp_diff = mean(temp_diff)) %>%
   arrange(mean_temp_diff) %>% 
-  top_n(-1)#Question - why do I need to use -1 n(bottom of list) after it has been arranged?
-BOM_data_station
+  head(1)
+BOM_data_station 
